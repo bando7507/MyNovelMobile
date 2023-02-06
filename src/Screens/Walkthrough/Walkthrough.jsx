@@ -4,8 +4,11 @@ import React, { useRef } from 'react'
 import { COLORS, constants, FONTS, SIZES } from '../../../constants'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import Walkthrough1 from './Walkthrough1'
+import Walkthrough2 from './Walkthrough2'
+import Walkthrough3 from './Walkthrough3'
+import Walkthrough4 from './Walkthrough4'
 
-export default function Walkthrough() {
+export default function Walkthrough({ navigation }) {
   const scrollX = useRef( new Animated.Value(0)).current
 
 
@@ -88,7 +91,13 @@ export default function Walkthrough() {
             borderRadius: SIZES.radius,
             alignItems: 'center',
             justifyContent: 'center',
-          }}>
+          }}
+          onPress={() => navigation.reset({
+            index: 0,
+            routes: [{name: 'AuthMain'}] 
+          })}
+          // onPress={() => navigation.navigate('AuthMain')}
+          >
             <Text style={{
               color: COLORS.lightGrey,
               marginHorizontal: 60,
@@ -142,7 +151,9 @@ export default function Walkthrough() {
               width:SIZES.width,
             }}>
               {item.id == 0 && <Walkthrough1 />}
-              {/* <Walkthrough1 /> */}
+              {item.id == 1 && <Walkthrough2 />}
+              {item.id == 2 && <Walkthrough3 />}
+              {item.id == 3 && <Walkthrough4 />}
             </View>
 
             <View style={{

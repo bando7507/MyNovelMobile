@@ -8,52 +8,37 @@ export default function Walkthrough1() {
 
     const [rowImgs, setRowImgs]= useState([
         ...constants.walkthrough_01_01_images,
-        ...constants.walkthrough_01_01_images,
     ])
-
-
-    const [currentPos, srtCurrentPos] = useState(0)
-
-    const [row2Imgs, setRow2Imgs]= useState([
-        ...constants.walkthrough_01_02_images,
-        ...constants.walkthrough_01_02_images,
-    ])
-
-    const [currentPos2, srtCurrentPos2] = useState(0)
-
-
     const row1FlatList = useRef()
-    const row2FlatList = useRef()
 
 
   return (
     <View>
       <FlatList 
-    //   horizontal
-    showsHorizontalScrollIndicator={false}
-    snapToInterval={SIZES.width}
+      horizontal
+      showsHorizontalScrollIndicator={false}
       ref={row1FlatList}
-    data={rowImgs}
-    keyExtractor={(_, id) => `slide_${id}`}
-      renderItem={({item, id}) =>{
-        return(
-            <View style={{
-                width: ITEM_WIDTH,
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}>
+      data={rowImgs}
+      keyExtractor={(_, id) => `slide_${id}`}
+        renderItem={({item, id}) =>{
+          return(
+              <View style={{
+                  width: ITEM_WIDTH,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+              }}>
 
-                <Image 
-                source={item}
-                style={{
-                    width: 110,
-                    height:110
-                }}
-                />
-            </View>
-        )
-      }}
-      
+                  <Image 
+                  source={item}
+                  style={{
+                      width: 350,
+                      height:350,
+                      alignItems: 'center',
+                  }}
+                  />
+              </View>
+          )
+        }}
       />
     </View>
   )

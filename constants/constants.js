@@ -1,8 +1,8 @@
 const walkthrough_01_01_images = [
     require("../assets/images/walkthrough/walkthrough_01_01.png"),
-    require("../assets/images/walkthrough/walkthrough_01_02.png"),
-    require("../assets/images/walkthrough/walkthrough_01_03.png"),
-    require("../assets/images/walkthrough/walkthrough_01_04.png"),
+    // require("../assets/images/walkthrough/walkthrough_01_02.png"),
+    // require("../assets/images/walkthrough/walkthrough_01_03.png"),
+    // require("../assets/images/walkthrough/walkthrough_01_04.png"),
 
 ]
 
