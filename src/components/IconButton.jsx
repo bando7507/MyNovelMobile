@@ -22,7 +22,7 @@ export default function IconButton({
         style={{
             width: 30,
             height: 30,
-            tintColor: COLORS.width,
+            // tintColor: COLORS.width,
             ...iconStyle
         }}
         />

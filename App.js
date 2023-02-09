@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { AuthMain } from './src/Screens';
+import { AuthMain, Home, ScanPrds } from './src/Screens';
 import Walkthrough from './src/Screens/Walkthrough/Walkthrough';
 import Welcome from './src/Screens/Walkthrough/Welcome';
 
@@ -27,6 +27,16 @@ export default function App() {
         <Stack.Screen 
         name='AuthMain'
         component={AuthMain}
+        />
+
+        <Stack.Screen 
+        name='Home'
+        component={Home}
+        />
+
+        <Stack.Screen 
+        name='ScanPrds'
+        component={ScanPrds}
         />
       </Stack.Navigator>
       

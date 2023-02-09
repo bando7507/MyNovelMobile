@@ -18,7 +18,7 @@ import ChexBox from '../../components/ChexBox'
 
 
 
-export default function AuthMain() {
+export default function AuthMain({ navigation }) {
 
   const [mode, setMode] = useState(true)
   const [isVisible, setIsVisible] = useState(false)
@@ -107,6 +107,7 @@ export default function AuthMain() {
                         height: 25,
                         marginRight: SIZES.base
                     }}
+                    
                     />
                 }
                 appendComponent={
@@ -143,7 +144,9 @@ export default function AuthMain() {
                 height: 50,
                 backgroundColor: COLORS.primary,
                 borderRadius: SIZES.radius
-              }}>
+              }}
+              onPress={() => navigation.navigate('Home')}
+              >
                 <Text style={{
                   fontSize: SIZES.h3,
                   color: COLORS.light
@@ -308,7 +311,11 @@ export default function AuthMain() {
                   Create Account
                 </Text>
               </Pressable>
+
+
+
         </View>
+
         {renderCountryModal()}
     </View>
     )
@@ -396,6 +403,116 @@ export default function AuthMain() {
     )
   }
 
+  const renderAuthConatinerFooter = () =>{
+    return(
+      <View style={{
+        flexDirection: 'row',
+        height: 80,
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        marginTop: -30,
+        paddingBottom: SIZES.radius,
+        marginHorizontal: SIZES.radius,
+        backgroundColor: COLORS.light60,
+        borderBottomLeftRadius: SIZES.radius,
+        borderBottomRightRadius: SIZES.radius,
+        zIndex: 0
+      }}>
+        <Text style={{
+          color: COLORS.grey,
+          ...FONTS.body5
+        }}>
+          {mode && "Don't have an account? "}
+          {!mode && "I already have an account."}
+        </Text>
+
+        <Pressable style={{
+          marginLeft: SIZES.base,
+          backgroundColor: null
+        }}
+        onPress={() => setMode(!mode)}
+        >
+          <Text style={{
+            color: COLORS.support3,
+            ...FONTS.h5
+          }}>
+          {mode && "Create New Account"}
+          {!mode && "Sign In"}
+          </Text>
+        </Pressable>
+      </View>
+    )
+  }
+
+  const renderSocialLogin = () => {
+    return(
+      <View style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: -30,
+        zIndex: -1
+      }}>
+        <Text style={{
+          color: COLORS.dark,
+          ...FONTS.body3
+        }}>
+          Or Log in with
+        </Text>
+
+        <View style={{
+          flexDirection: 'row',
+          marginTop: SIZES.radius
+        }}>
+          <IconButton 
+          icon={icons.twitter}
+          iconStyle={{
+            tinColor: COLORS.dark
+          }}
+          containerStyle={{
+            width: 55,
+            height: 55,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: SIZES.radius,
+            backgroundColor: COLORS.grey20
+          }}
+          />
+          <IconButton 
+          icon={icons.linkedin}
+          iconStyle={{
+            tinColor: COLORS.dark
+          }}
+          containerStyle={{
+            width: 55,
+            height: 55,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: SIZES.radius,
+            backgroundColor: COLORS.grey20,
+            marginLeft: SIZES.radius
+          }}
+          />
+          <IconButton 
+          icon={icons.google}
+          iconStyle={{
+            tinColor: COLORS.dark
+          }}
+          containerStyle={{
+            width: 55,
+            height: 55,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: SIZES.radius,
+            backgroundColor: COLORS.grey20,
+            marginLeft: SIZES.radius
+          }}
+          />
+        </View>
+      </View>
+    )
+  }
+
   return (
     <View style={{
       flex: 1,
@@ -411,27 +528,13 @@ export default function AuthMain() {
         height: 50
       }}
       />
-      <View>
+      <View style={{
+        zIndex: 1
+      }}>
         {renderAuthContainer()}
       </View>
-
-      <TouchableOpacity
-      style={{
-        backgroundColor: COLORS.primary
-      }}
-      onPress={() => setMode(!mode)}
-      >
-        <View style={{
-            alignItems: 'center',
-            justifyContent: 'center'
-        }}>
-            <Text style={{
-                color: COLORS.light
-            }}>
-                Toggle
-            </Text>
-        </View>
-      </TouchableOpacity>
+      {renderAuthConatinerFooter()}
+      {mode && renderSocialLogin()}
     </View>
   )
 }
@@ -444,6 +547,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.light,
     shadowColor: COLORS.primary,  
     elevation: 20,  
-    borderRadius: 2
+    borderRadius: 2,
+    zIndex: 1
   }
 })
